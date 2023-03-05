@@ -1,6 +1,6 @@
 {
 	"name": "@monejs/vue-admin-layout",
-	"version": "0.0.4",
+	"version": "0.0.5",
 	"private": false,
 	"description": "A Layout Component of Admin Template, Support Vue2 and Vue3",
 	"author": "Mone <2361954836@qq.com>",

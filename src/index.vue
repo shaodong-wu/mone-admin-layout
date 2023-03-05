@@ -158,7 +158,7 @@ const siderProps = computed(() => {
 const headerProps = computed(() => {
   return {
     fixed: props.fixedHeader,
-    zIndex: isVertical.value ? 1000 : 100,
+    zIndex: isVertical.value && !props.isMobile ? 1000 : 100,
     height: props.headerHeight,
 		paddingLeft: !visible.value.sider || props.isMobile || isVertical.value ? 0 : siderProps.value.width,
     transitionDuration: props.transitionDuration,
@@ -170,7 +170,7 @@ const tabsProps = computed(() => {
   return {
     fixed: props.fixedHeader,
 		top: visible.value.header ? headerProps.value.height : 0,
-    zIndex: isVertical.value ? 1000 : 100,
+    zIndex: isVertical.value && !props.isMobile ? 1000 : 100,
     height: props.tabsHeight,
 		paddingLeft: !visible.value.sider || props.isMobile || isVertical.value ? 0 : siderProps.value.width,
     transitionDuration: props.transitionDuration,
@@ -201,7 +201,7 @@ const paddingProps = computed(() => {
 	const headerHeight = visible.value.header ? headerProps.value.height : 0;
   return {
     headerTop: props.fixedHeader ? tabsHeight + headerHeight : 0,
-    siderTop: props.isMobile || !isVertical.value ? 0 : headerProps.value.height,
+    siderTop: props.isMobile || !isVertical.value ? 0 : tabsHeight + headerHeight,
     siderLeft: !visible.value.sider || props.isMobile ? 0 : siderProps.value.width,
     footerBottom: footerProps.value.fixed ? footerProps.value.height : 0,
   };

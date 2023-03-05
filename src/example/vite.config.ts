@@ -14,5 +14,9 @@ export default defineConfig({
 		vue(),
 		DefineOptions.vite(),
 		unocss()
-	]
+	],
+	build: {
+		outDir: "../../docs",
+		emptyOutDir: false,
+	}
 });
