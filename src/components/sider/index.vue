@@ -112,6 +112,7 @@ function toggleCollapsed(collapsed: boolean) {
 	height: 100%;
 	transition-property: all;
 	overflow: hidden;
+	touch-action: none;
 
 	&-mask {
 		position: fixed;
@@ -120,6 +121,7 @@ function toggleCollapsed(collapsed: boolean) {
 		right: 0;
 		bottom: 0;
 		transition-property: background-color;
+		touch-action: none;
 	}
 }
 </style>
