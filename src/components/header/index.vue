@@ -29,7 +29,7 @@ const props = withDefaults(defineProps<Props>(), {
 	fixed: true,
 	zIndex: 100,
 	height: 56,
-	paddingLeft: 200,
+	paddingLeft: 240,
 	transitionDuration: 300,
 	transitionTimingFunction: "ease-in-out",
 });
@@ -46,7 +46,7 @@ const style = computed(() => {
 });
 </script>
 
-<style lang="css">
+<style lang="less">
 .admin-layout__header {
 	box-sizing: border-box;
 	left: 0;

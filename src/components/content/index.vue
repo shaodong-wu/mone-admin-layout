@@ -12,23 +12,23 @@ defineOptions({ name: "LayoutContent" });
 
 interface Props {
 	/** 顶部内边距 */
-	paddingTop?: number,
+	paddingTop?: number;
 	/** 侧边内边距 */
-	paddingLeft?: number,
+	paddingLeft?: number;
 	/** 底部内边距 */
-	paddingBottom?: number,
+	paddingBottom?: number;
 	/** 是否溢出隐藏 */
-	overflowHidden?: boolean,
+	overflowHidden?: boolean;
 	/** 动画过渡时间 */
-	transitionDuration?: number,
+	transitionDuration?: number;
 	/** 动画过渡曲线 */
-	transitionTimingFunction?: string,
+	transitionTimingFunction?: string;
 }
 
 const props = withDefaults(defineProps<Props>(), {
-	paddingTop: 56,
-	paddingLeft: 200,
-	paddingBottom: 56,
+	paddingTop: 100,
+	paddingLeft: 240,
+	paddingBottom: 48,
 	overflowHidden: true,
 	transitionDuration: 300,
 	transitionTimingFunction: "ease-in-out",
@@ -46,7 +46,7 @@ const style = computed(() => {
 });
 </script>
 
-<style lang="css">
+<style lang="less">
 .admin-layout__content {
 	box-sizing: border-box;
 	width: 100%;

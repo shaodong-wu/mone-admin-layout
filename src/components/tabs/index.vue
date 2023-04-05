@@ -33,8 +33,8 @@ const props = withDefaults(defineProps<Props>(), {
 	fixed: true,
 	top: 56,
 	zIndex: 100,
-	height: 56,
-	paddingLeft: 0,
+	height: 44,
+	paddingLeft: 240,
 	transitionDuration: 300,
 	transitionTimingFunction: "ease-in-out",
 });
@@ -50,10 +50,9 @@ const style = computed(() => {
 		transitionTimingFunction: props.transitionTimingFunction,
 	});
 });
-
 </script>
 
-<style scoped lang="css">
+<style scoped lang="less">
 .admin-layout__tabs {
 	box-sizing: border-box;
 	width: 100%;

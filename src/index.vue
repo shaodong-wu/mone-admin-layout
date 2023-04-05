@@ -3,12 +3,14 @@
     <layout-header
       v-if="visible.header"
       v-bind="headerProps"
+			:padding-left="paddingProps.headerLeft"
     >
       <slot name="header"></slot>
     </layout-header>
     <layout-tabs
       v-if="visible.tabs"
       v-bind="tabsProps"
+			:padding-left="paddingProps.headerLeft"
     >
       <slot name="tabs"></slot>
     </layout-tabs>
@@ -16,7 +18,7 @@
       v-if="visible.sider"
       v-bind="siderProps"
       :padding-top="paddingProps.siderTop"
-			@update:overlay="toggleCollapse"
+			@update:collapsed="toggleCollapse"
     >
       <slot name="sider"></slot>
     </layout-sider>
@@ -112,7 +114,7 @@ const props = withDefaults(defineProps<Props>(), {
   footerHeight: 48,
   fixedFooter: false,
 	useSider: true,
-  siderWidth: 200,
+  siderWidth: 240,
   siderCollapsedWidth: 64,
   siderCollapse: false,
   transitionDuration: 300,
@@ -140,44 +142,54 @@ const style = computed(() => {
 
 const isVertical = computed(() => props.mode === "vertical");
 
+/**
+ * @description Sider Props
+ */
 const siderProps = computed(() => {
-	const foldWidth = props.isMobile ? 0 : props.siderCollapsedWidth;
-  const normalWidth = props.isMobile ? props.siderWidth : props.siderWidth;
   return {
     isMobile: props.isMobile,
-    overlay: !props.siderCollapse,
+    overlay: true,
     overlayColor: props.maskColor,
     lockScroll: true,
-    zIndex: props.isMobile || isVertical.value ? 999 : 100,
-    width: props.siderCollapse ? foldWidth : normalWidth,
+		collapsed: props.siderCollapse,
+    width: props.siderWidth,
+		collapsedWidth: props.siderCollapsedWidth,
     transitionDuration: props.transitionDuration,
     transitionTimingFunction: props.transitionTimingFunction,
+    zIndex: props.isMobile || isVertical.value ? 999 : 100,
   };
 });
 
+/**
+ * @description Header Props
+ */
 const headerProps = computed(() => {
   return {
     fixed: props.fixedHeader,
     zIndex: isVertical.value && !props.isMobile ? 1000 : 100,
     height: props.headerHeight,
-		paddingLeft: !visible.value.sider || props.isMobile || isVertical.value ? 0 : siderProps.value.width,
     transitionDuration: props.transitionDuration,
     transitionTimingFunction: props.transitionTimingFunction,
   };
 });
 
+/**
+ * @description Tabs Props
+ */
 const tabsProps = computed(() => {
   return {
     fixed: props.fixedHeader,
 		top: visible.value.header ? headerProps.value.height : 0,
     zIndex: isVertical.value && !props.isMobile ? 1000 : 100,
     height: props.tabsHeight,
-		paddingLeft: !visible.value.sider || props.isMobile || isVertical.value ? 0 : siderProps.value.width,
     transitionDuration: props.transitionDuration,
     transitionTimingFunction: props.transitionTimingFunction,
   };
 });
 
+/**
+ * @description Footer Props
+ */
 const footerProps = computed(() => {
   return {
     fixed: props.fixedFooter,
@@ -188,6 +200,9 @@ const footerProps = computed(() => {
   };
 });
 
+/**
+ * @description Content Props
+ */
 const contentProps = computed(() => {
   return {
     overflowHidden: props.overflowHidden,
@@ -196,13 +211,18 @@ const contentProps = computed(() => {
   };
 });
 
+/**
+ * @description Padding Props
+ */
 const paddingProps = computed(() => {
 	const tabsHeight = visible.value.tabs ? tabsProps.value.height : 0;
 	const headerHeight = visible.value.header ? headerProps.value.height : 0;
+	const siderWidth = siderProps.value.collapsed ? siderProps.value.collapsedWidth : siderProps.value.width;
   return {
     headerTop: props.fixedHeader ? tabsHeight + headerHeight : 0,
+    headerLeft: !visible.value.sider || props.isMobile || isVertical.value ? 0 : siderWidth,
     siderTop: props.isMobile || !isVertical.value ? 0 : tabsHeight + headerHeight,
-    siderLeft: !visible.value.sider || props.isMobile ? 0 : siderProps.value.width,
+    siderLeft: !visible.value.sider || props.isMobile ? 0 : siderWidth,
     footerBottom: footerProps.value.fixed ? footerProps.value.height : 0,
   };
 });

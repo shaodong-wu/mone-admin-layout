@@ -7,19 +7,19 @@ export function styleValue(styles: any): string {
 			.map(function (item) {
 				return styleValue(item);
 			})
-			.join(';');
+			.join(";");
 	}
 
 	if (styles instanceof Object) {
 		return Object
 			.keys(styles)
 			.filter(function (key) {
-				return styles[key] != null && styles[key] !== '';
+				return styles[key] != null && styles[key] !== "";
 			})
 			.map(function (key) {
-				return [kebabCase(key), [addUnit(styles[key])]].join(':');
+				return [kebabCase(key), [addUnit(styles[key])]].join(":");
 			})
-			.join(';');
+			.join(";");
 	}
 
 	return styles;
@@ -42,7 +42,7 @@ export function kebabCase(word: string) {
  * @returns
  */
 export function addUnit(value: unknown) {
-	switch (typeof (value)) {
+	switch (typeof value) {
 		case "number":
 			return `${value}px`;
 		default:
