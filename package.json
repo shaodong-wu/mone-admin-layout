@@ -1,6 +1,6 @@
 {
 	"name": "@monejs/vue-admin-layout",
-	"version": "0.0.6",
+	"version": "0.0.7",
 	"private": false,
 	"description": "A Layout Component of Admin Template, Support Vue2 and Vue3",
 	"author": "Mone <2361954836@qq.com>",
@@ -32,7 +32,7 @@
 		"build:lib": "pnpm run typecheck && cross-env VITE_IS_LIB=true vite build",
 		"typecheck": "vue-tsc --noEmit",
 		"preview": "vite preview",
-		"publish": "pnpm publish --access public"
+		"public": "pnpm publish --access public"
 	},
 	"peerDependencies": {
 		"@vue/composition-api": "^1.0.0-rc.1",
