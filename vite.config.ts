@@ -10,10 +10,8 @@ export default defineConfig((configEnv: ConfigEnv) => {
 	const viteEnv = loadEnv(configEnv.mode, `.env.${configEnv.mode}`);
 	const library = viteEnv.VITE_IS_LIB === "true";
 
-	/**
-	 * @description 库构建模式
-	 */
-	const libraryBuild = (): BuildOptions => ({
+	/** 库构建模式 */
+	const libraryBuild: BuildOptions = {
 		lib: {
 			entry: path.resolve(__dirname, "src/main.ts"),
 			name: "MoneAdminLayout",
@@ -28,15 +26,13 @@ export default defineConfig((configEnv: ConfigEnv) => {
 			},
 		},
 		sourcemap: false,
-	});
+	};
 
-	/**
-	 * @description 项目构建模式
-	 */
-	const projectBuild = (): BuildOptions => ({
+	/** 项目构建模式 */
+	const projectBuild: BuildOptions = {
 		outDir: "docs",
 		sourcemap: false,
-	});
+	};
 
 	return {
 		base: "./",
@@ -68,6 +64,6 @@ export default defineConfig((configEnv: ConfigEnv) => {
 		optimizeDeps: {
 			exclude: ["vue-demi"],
 		},
-		build: library ? libraryBuild() : projectBuild(),
+		build: library ? libraryBuild : projectBuild,
 	};
 });
