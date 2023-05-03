@@ -1,9 +1,24 @@
 {
 	"name": "@monejs/vue-admin-layout",
-	"version": "0.0.8",
+	"version": "0.0.9",
 	"private": false,
 	"description": "A Layout Component of Admin Template, Support Vue2 and Vue3",
-	"author": "Mone <2361954836@qq.com>",
+	"author": "Mone <2361954836@qq.com> (https://github.com/shaodong-wu)",
+  "homepage": "https://github.com/shaodong-wu/mone-admin-layout#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shaodong-wu/mone-admin-layout.git"
+  },
+  "bugs": {
+    "url": "https://github.com/shaodong-wu/mone-admin-layout/issues"
+  },
+	"keywords": [
+		"admin",
+		"layout",
+		"admin-layout",
+		"vue2",
+		"vue3"
+	],
 	"main": "./dist/index.umd.js",
 	"module": "./dist/index.es.js",
 	"types": "./dist/index.d.ts",
@@ -18,13 +33,6 @@
 		},
 		"./style.css": "./dist/style.css"
 	},
-	"keywords": [
-		"admin",
-		"layout",
-		"admin-layout",
-		"vue2",
-		"vue3"
-	],
 	"scripts": {
 		"dev": "cross-env VITE_IS_LIB=false vite",
 		"build": "pnpm run typecheck && cross-env VITE_IS_LIB=false vite build",
