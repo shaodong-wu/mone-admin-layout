@@ -74,8 +74,8 @@
 
 <script setup lang="ts">
 import { reactive, computed } from "vue";
-import AdminLayout from "@monejs/vue-admin-layout";
 import LayoutSetting from "./Setting.vue";
+import AdminLayout from "../index.vue";
 
 const theme = reactive({
 	isVertical: false,

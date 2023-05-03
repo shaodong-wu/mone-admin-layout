@@ -215,15 +215,16 @@ const contentProps = computed(() => {
  * @description Padding Props
  */
 const paddingProps = computed(() => {
-	const tabsHeight = visible.value.tabs ? tabsProps.value.height : 0;
-	const headerHeight = visible.value.header ? headerProps.value.height : 0;
 	const siderWidth = siderProps.value.collapsed ? siderProps.value.collapsedWidth : siderProps.value.width;
+	const headerHeight = visible.value.header ? headerProps.value.height : 0;
+	const tabsHeight = visible.value.tabs ? tabsProps.value.height : 0;
+	const footerHeight = visible.value.footer ? footerProps.value.height : 0;
   return {
     headerTop: props.fixedHeader ? tabsHeight + headerHeight : 0,
     headerLeft: !visible.value.sider || props.isMobile || isVertical.value ? 0 : siderWidth,
     siderTop: props.isMobile || !isVertical.value ? 0 : tabsHeight + headerHeight,
     siderLeft: !visible.value.sider || props.isMobile ? 0 : siderWidth,
-    footerBottom: footerProps.value.fixed ? footerProps.value.height : 0,
+    footerBottom: footerProps.value.fixed ? footerHeight : 0,
   };
 });
 
